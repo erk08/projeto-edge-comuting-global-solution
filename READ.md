@@ -33,7 +33,7 @@ antes de simular a transmissão de dados para um satélite.
 * 1x ldr(botão luminoso)
 * 1x piezo(buzzer)
 * 1x LCD crystal
-* 
+* 3x leds
 * 6x Resistores
   
 
