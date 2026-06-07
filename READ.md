@@ -18,6 +18,14 @@ Para visualizar a simulação interativa do circuito, os componentes e o funcion
 
 ## 📝 Descrição do Projeeto
 
+PROJETO GLOBAL SOLUTION 2026 - ENGENHARIA DE SOFTWARE FIAP
+TEMA: Indústria Espacial - Edge Computing & Computer Systems
+ 
+DESCRIÇÃO: Estação de Monitoramento Inteligente (Edge Node)
+Este código realiza a leitura de sensores críticos e toma decisões locais 
+antes de simular a transmissão de dados para um satélite.
+
+
 ## 🛠️ Hardware e Componentes (Simulação)
 * 1x Arduino Uno R3
 * 1x sensor tmp-36(sensor de temperatura)
