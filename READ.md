@@ -21,7 +21,7 @@ Para visualizar a simulação interativa do circuito, os componentes e o funcion
 PROJETO GLOBAL SOLUTION 2026 - ENGENHARIA DE SOFTWARE FIAP
 TEMA: Indústria Espacial - Edge Computing & Computer Systems
  
-DESCRIÇÃO: Estação de Monitoramento Inteligente (Edge Node)
+DESCRIÇÃO: Estação de Monitoramento Inteligente (zênite)
 Este código realiza a leitura de sensores críticos e toma decisões locais 
 antes de simular a transmissão de dados para um satélite.
 
@@ -39,6 +39,7 @@ antes de simular a transmissão de dados para um satélite.
 
 ## 💻 Código Fonte
 O código carregado no microcontrolador está disponível na simulação do Tinkercad e também pode ser visualizado abaixo:
+
 /**
 * Membros do projeto:
 * Anna Giazzi
@@ -47,7 +48,6 @@ O código carregado no microcontrolador está disponível na simulação do Tink
 * Julia Lopes 
 * Rafael Morales
 */
-
 
 // biblioteca padrão do lcd crystal
 #include <LiquidCrystal.h>
@@ -62,7 +62,7 @@ const int umidadePin = A1;
 const int ldrPin = A2;     
 const int ledTxPin = 13;   // led de simulacao de envio dados para o satelite de monitoramento
 
-// -> NOVOS COMPONENTES DE ALERTA
+// -> componentes de alerta
 const int piezoPin = 9;       // Buzzer/Piezo para alertas sonoros
 const int ledCalorPin = 7;    // LED Amarelo para alerta de alta temperatura
 const int ledSecoPin = 6;     // LED para alerta de solo seco (ex: Vermelho ou Laranja)
@@ -87,7 +87,7 @@ void setup() {
   lcd.setCursor(0, 0);
   lcd.print("inicio projeto");
   lcd.setCursor(0, 1);
-  lcd.print("Fiap satelite..");
+  lcd.print("zenite..");
   delay(2000);
   lcd.clear();
 }
@@ -109,7 +109,7 @@ void loop() {
   int luzPercent = map(ldrRead, 0, 675, 0, 100);
   luzPercent = constrain(luzPercent, 0, 100); // Garante estabilidade entre 0% e 100%
 
-  // 2. LÓGICA DE EDGE COMPUTING (Local Decision Making) & ATUADORES
+  // logica do edge computing
   bool alertStatus = false;
   String alertMsg = "";
 
@@ -117,7 +117,7 @@ void loop() {
     alertStatus = true;
     alertMsg = "Alerta: Calor!";
     
-    digitalWrite(ledCalorPin, HIGH); // Acende o LED Amarelo
+    digitalWrite(ledCalorPin, HIGH); // Acende o lED Amarelo
     digitalWrite(ledSecoPin, LOW);
     tone(piezoPin, 1000);            // Apita o Piezo (frequência de 1000Hz)
   } 
@@ -125,7 +125,7 @@ void loop() {
     alertStatus = true;
     alertMsg = "Alerta: Seco!";
     
-    digitalWrite(ledSecoPin, HIGH);  // Acende o LED de solo seco
+    digitalWrite(ledSecoPin, HIGH);  // Acende o lED de solo seco
     digitalWrite(ledCalorPin, LOW);
     tone(piezoPin, 1500);            // Apita o Piezo (frequência de 1500Hz)
   } 
@@ -160,7 +160,7 @@ void loop() {
     lcd.setCursor(0, 1);
     lcd.print("Luz:");
     lcd.print(luzPercent);
-    lcd.print("%  Status:OK   "); 
+    lcd.print("% Status:OK   "); 
   }
 
   // -> simulação da transmissão de dados orbital 
@@ -178,7 +178,7 @@ void transmitData(float t, int u, int l) {
   
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print(">>> Carregando <<<");
+  lcd.print(" Carregando ");
   lcd.setCursor(0, 1);
   lcd.print("Envio de Dados...");
   
